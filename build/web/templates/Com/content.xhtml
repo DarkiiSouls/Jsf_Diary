@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:composition>
+
+            <section id="main">
+                <!-- Banner -->
+                <section id="banner" style="background-image: url(https://c1.staticflickr.com/1/130/376152628_249e3630c0_b.jpg)">
+                    <div class="inner">
+                        <h1>Hey, I'm You Diary</h1>
+                        <h:form>
+                            <ul class="actions">
+                                <!--                      <li><a href="#galleries" class="button alt scrolly big">Write a New Diary</a></li>-->
+                                <ui:fragment rendered="#{!loginBean.girisYaptiMi}"><li><h:commandLink action="/register.xhtml?faces-redirect=true" class="button alt scrolly big">Register With us</h:commandLink></li></ui:fragment> 
+                                <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li ><h:commandLink action="/pages/newNote.xhtml?faces-redirect=true" class="button alt scrolly big">Write a New Diary</h:commandLink></li></ui:fragment>
+                            </ul>
+                        </h:form>
+                    </div>
+                </section>
+
+                <section id="galleries">
+
+                    <div class="gallery">
+                        <header class="special">
+                            <h2>New Public Diarys</h2>
+                        </header>
+
+                        <ui:include src="/pages/main.xhtml"></ui:include>
+
+                        <footer>
+                        
+                            <a href="pages/notes.xhtml" class="button big">All Storys</a>
+
+                        </footer>
+                    </div>
+                    <footer id="footer">
+                        <div class="copyright">
+                            &copy; Egunluk @2018
+                        </div>
+                    </footer>
+                </section>
+            </section>
+        </ui:composition>
+    </h:body>
+</html>
+

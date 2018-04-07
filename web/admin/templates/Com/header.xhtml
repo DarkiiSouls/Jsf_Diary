@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:body>
+
+        <ui:composition>
+            <div class="header">
+                <div class="header-top">
+                    <div class="container">
+                        <div class="logo">
+                            <a href="index.xhtml">
+                                <h1>E_Gunluk Admin</h1>
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div style="background: #46b8da" class="head-bottom ">
+                <div class="container">
+                    <h:form>
+                        <ul class="nav navbar-nav">
+                            <li ><h:commandLink action="/index.xhtml?faces-redirect=true">Home Page</h:commandLink></li>
+                            <li ><h:commandLink action="/admin/index.xhtml?faces-redirect=true">Admin Home Page</h:commandLink></li>
+                            <li ><h:commandLink action="/admin/User/list.xhtml?faces-redirect=true">Users</h:commandLink></li>
+                            <li ><h:commandLink action="/admin/Notes/list.xhtml?faces-redirect=true">Notes</h:commandLink></li>
+<!--                            <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li ><h:commandLink action="/admin/Notes/create.xhtml?faces-redirect=true">Create a Note</h:commandLink></li></ui:fragment>-->
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li> <a>Hello #{loginBean.loggeduser.username}</a></li></ui:fragment>
+                            <ui:fragment rendered="#{!loginBean.girisYaptiMi}"><li><h:commandLink action="/login.xhtml?faces-redirect=true">Login</h:commandLink></li></ui:fragment> 
+                            <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li><h:commandLink action="#{loginBean.cikisYap()}">LogOut</h:commandLink></li></ui:fragment>
+                        </ul>
+                    </h:form>
+                </div>
+            </div>
+        </ui:composition>
+    </h:body>
+</html>
+

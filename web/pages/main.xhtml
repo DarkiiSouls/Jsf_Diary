@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:body>
+
+        <ui:composition>
+          
+
+            <div style="width: 60%;left: 300px;position: inherit">
+                <h:dataTable value="#{noteBean.allPublicNotes}" var="note" class="table"  >
+                    <div class="row">    
+
+                        <h:column >
+                            <div class="col-md-12">
+                                <h:form>
+                                    <h3><h:commandLink value="#{note.title}" action="#{noteBean.openNote(note.id)}"></h:commandLink></h3>
+                                </h:form>
+
+
+                                <p><h:outputText value="#{note.note_text}" /></p>
+
+                                <h6 style="color: red">Publisher #{note.user.username}</h6><br></br>
+                            </div>
+                        </h:column>
+                    </div>
+
+                </h:dataTable>
+            </div>
+           
+
+            
+        </ui:composition>
+
+    </h:body>
+
+</html>

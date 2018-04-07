@@ -1,0 +1,63 @@
+ #header {
+     position: fixed;
+     left: 0;
+     height: 100%;
+     background: #272728;
+     width: 200px;
+     border-radius: 4px;
+ }
+ 
+ #content {
+     position: fixed;
+     left: 250px;
+     width: 84%;
+     top: 50px;
+ }
+ 
+ #footer {
+     position: fixed;
+     bottom: 0;
+     width: 20%;
+     border: solid 1px #272728;
+     color: #23527c;
+     background: #272728;
+     margin: 0 800px;
+     border-radius: 4px;
+     padding: 5px;
+     height: 3%;
+ }
+ 
+ #footer p {
+     margin: 0 135px;
+ }
+ 
+ body {
+     background: #eee;
+ }
+ 
+ #header .container {
+     padding: 15px;
+ }
+ 
+ #header .login {
+     position: fixed;
+     right: 20px;
+     top: 10px;
+ }
+ 
+
+ 
+ .theHead {
+     position: inherit;
+     left: 40px;
+ }
+
+ .register{
+         background-color: white;
+    width: 50%;
+    left: 500px;
+    position: fixed;
+    border-radius: 10px;
+    height: 500px;
+    padding: 20px;
+ }

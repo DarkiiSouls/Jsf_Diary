@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:body>
+
+        <ui:composition>
+            <nav id="nav">
+                <h:form>
+                    <ul >
+                        <li ><h:commandLink action="/index.xhtml?faces-redirect=true" class="fa fa-home"></h:commandLink></li>
+                        <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li ><h:commandLink action="/pages/mynotes.xhtml?faces-redirect=true" class="fa fa-bars"></h:commandLink></li></ui:fragment>
+                        <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li ><h:commandLink action="/pages/newNote.xhtml?faces-redirect=true" class="fa fa-file"></h:commandLink></li></ui:fragment>
+                        <!--                                        <li ><h:commandLink action="/pages/content.xhtml?faces-redirect=true">Contacts</h:commandLink></li>
+                                                                <li ><h:commandLink action="/pages/about.xhtml?faces-redirect=true">About</h:commandLink></li>-->
+                        <ui:fragment rendered="#{loginBean.isAdmin}"><li><h:commandLink action="/admin/index.xhtml?faces-redirect=true" class="glyphicon glyphicon-user"></h:commandLink></li></ui:fragment>
+
+                        <div style="bottom: 0;position: fixed">
+                            <ui:fragment rendered="#{!loginBean.girisYaptiMi}"><li><h:commandLink action="/login.xhtml?faces-redirect=true">LogIn</h:commandLink></li></ui:fragment> 
+                            <ui:fragment rendered="#{!loginBean.girisYaptiMi}"><li><h:commandLink action="/register.xhtml?faces-redirect=true">Register</h:commandLink></li></ui:fragment> 
+
+
+                            <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li><h:commandLink action="/pages/Profile.xhtml?faces-redirect=true">#{loginBean.loggeduser.username}</h:commandLink></li></ui:fragment>
+                            <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li><h:commandLink action="#{loginBean.cikisYap()}">LogOut</h:commandLink></li></ui:fragment>
+                        </div>
+                    </ul>
+                </h:form>
+            </nav>
+        
+        </ui:composition>
+    </h:body>
+</html>
+

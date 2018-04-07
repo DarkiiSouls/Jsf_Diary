@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:body>
+
+        <ui:composition template="/admin/templates/Layout.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h:dataTable class="table table-bordered " value="#{userBean.allUsers}" var="user"> 
+
+                        <h:column>
+                            <f:facet name="header">
+
+                                <h4>ID</h4>
+                            </f:facet>
+                            <h:outputText value="#{user.id}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+
+                                <h4>UserName</h4>
+                            </f:facet>
+                            <h:outputText value="#{user.username}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+
+                                <h4>Email</h4>
+                            </f:facet>
+                            <h:outputText value="#{user.email}" />
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">
+
+                                <h4>Role</h4>
+                            </f:facet>
+                            <h:outputText value="#{user.role}" />
+                        </h:column> 
+
+                        <h:column>
+                            <f:facet name="header"> Delete</f:facet>
+                            <h:commandLink value ="Delete" action="#{userBean.delete(user.id)}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Update </f:facet>
+                            <h:commandLink value ="Update" action="#{userBean.update(user)}"/>
+                        </h:column>
+
+                    </h:dataTable>
+                  
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+
+</html>

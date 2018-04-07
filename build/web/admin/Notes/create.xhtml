@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+
+    </h:head>
+
+    <h:body>
+
+        <ui:composition template="/admin/templates/Layout.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h:column>
+                        <f:facet name="header">
+
+                        </f:facet>
+                        <h4> <h:outputText value="title "/><br/></h4>
+                        <h:inputText value="#{noteBean.n.title}" /><br/><br/>
+                    </h:column>
+
+
+                    <h:column>
+                        <f:facet name="header">
+
+                        </f:facet>
+                        <h4> <h:outputText value="Note "/><br/></h4>
+                        <h:inputTextarea value="#{noteBean.n.note_text}" cols="100" rows="10"/><br/><br/>
+
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+
+                        </f:facet>
+                        <h4> <h:outputText value="Public "/><br/></h4>
+                        <h:selectBooleanCheckbox value="#{noteBean.n.isPublic}" /><br/><br/>
+                    </h:column>
+
+                    <h:commandButton value="note olustur" action="#{noteBean.createNoteForUser(loginBean.loggeduser)}"></h:commandButton>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
