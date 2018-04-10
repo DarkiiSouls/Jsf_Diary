@@ -12,12 +12,18 @@
                     #nav {
                         
                     }
+                    body{
+                        background-color: #f2f2f2
+                    }
                 </style>
-                <div style="margin: 70px;width:75% ">
-                    <h3>Your Diary</h3>
+                <div style="margin: 70px;    width: 50%;
+    margin-left: 30%;
+    background-color: #ffffff;
+    border-radius: 10px;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important">
+                    <h2 style="margin: 20px">Your Diary</h2>
                     <br></br>
-                    <h:dataTable value="#{noteBean.getAllUserNotes(loginBean.loggeduser.id)}" var="note" class="table" >
-                        <h:column>
+                    <h:dataTable value="#{noteBean.getAllUserNotes(loginBean.loggeduser.id)}" var="note" class="table" style="padding: 20px;margin: 20px;display: -webkit-box">
+                        <h:column >
     <!--                        <h3><a href="/pages/notedetails.xhtml?id=#{note.id}\&faces-redirect=true"></a></h3>-->
                             <h:form style="color: red">
                                 <h3><h:commandLink value="#{note.title}" action="#{noteBean.openNote(note.id)}"></h:commandLink></h3>
