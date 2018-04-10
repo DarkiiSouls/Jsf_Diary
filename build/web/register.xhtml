@@ -26,17 +26,17 @@
     margin-left: 100px"  class="user__title">Register With Us</h1>
                 <h:form class="form">
                     <h:column>                    
-                        <h:inputText value="#{userBean.user.username}" class="form__input" a:placeholder="Name" a:onfocus="this.value=''" />
+                        <h:inputText style="margin: 10px 0 0 0" value="#{userBean.user.username}" class="form__input" a:placeholder="Name" a:onfocus="this.value=''" />
                     </h:column>
                     <h:column>
                       
-                        <h:inputText value="#{userBean.user.email}" class="form__input" a:placeholder="Email" a:onfocus="this.value=''" />
+                        <h:inputText style="margin: 10px 0 0 0" value="#{userBean.user.email}" class="form__input" a:placeholder="Email" a:onfocus="this.value=''" />
                     </h:column>
                     <h:column>
-                        <h:inputSecret value="#{userBean.user.password}" class="form__input" a:placeholder="Password" a:onfocus="this.value=''"/>
+                        <h:inputSecret style="margin: 10px 0 0 0" value="#{userBean.user.password}" class="form__input" a:placeholder="Password" a:onfocus="this.value=''"/>
                     </h:column>
 
-                    <h:commandButton class="btn" value="Create new user" action="#{userBean.createUser()}"/>
+                    <h:commandButton style="margin: 10px 0 0 0" class="btn" value="Create new user" action="#{userBean.createUser()}"/>
                 </h:form>
              </div>
             </ui:define>

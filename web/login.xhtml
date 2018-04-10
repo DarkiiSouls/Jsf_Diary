@@ -21,16 +21,16 @@
                     <h:form class="form">
                         <h:column>
 
-                            <h:inputText value="#{loginBean.loggeduser.username}" class="form__input" a:placeholder="Name" a:onfocus="this.value=''"/>
+                            <h:inputText style="margin: 10px 0 0 0" value="#{loginBean.loggeduser.username}" class="form__input" a:placeholder="Name" a:onfocus="this.value=''"/>
 
                         </h:column>
                         <h:column>
 
-                            <h:inputSecret value="#{loginBean.loggeduser.password}" class="form__input" a:placeholder="Password" a:onfocus="this.value=''"/>
+                            <h:inputSecret style="margin: 10px 0 0 0" value="#{loginBean.loggeduser.password}" class="form__input" a:placeholder="Password" a:onfocus="this.value=''"/>
 
                         </h:column>
 
-                        <h:commandButton value="Log in" action="#{loginBean.giriYap()}" class="btn"/>
+                        <h:commandButton style="margin: 10px 0 0 0 " value="Log in" action="#{loginBean.giriYap()}" class="btn"/>
                     </h:form>
                 </div>
             </ui:define>
