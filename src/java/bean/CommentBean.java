@@ -16,7 +16,7 @@ public class CommentBean {
     
     public String createComment (){
         getCd().saveComment(getC());
-        return null;
+        return "/pages/notedetails.xhtml?faces-redirect=true";
     }
     public String createCommentForUser (User user,Note note){
         Comment com = getC();
@@ -24,7 +24,7 @@ public class CommentBean {
         com.setNote(note);
         getCd().saveComment(getC());
         setC(new Comment());
-        return null;
+         return "/pages/notedetails.xhtml?faces-redirect=true";
     }
     
     public Comment getCommentById (int comment_id){
