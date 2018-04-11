@@ -6,18 +6,17 @@
 package entity;
 
 import java.io.Serializable;
-
-import java.io.Serializable;
 import java.sql.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class Role implements Serializable{
+public class User_Role implements Serializable{
     private static final long serialVersionUID = 363L;
     private int id;
-    private String name;
+    private User user;    
+    private Role role;   
 
     public int getId() {
         return id;
@@ -27,14 +26,22 @@ public class Role implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public User getUser() {
+        return user;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUser(User user) {
+        this.user = user;
     }
- 
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+    
     
     
 }

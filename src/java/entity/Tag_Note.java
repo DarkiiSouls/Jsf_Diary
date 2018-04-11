@@ -6,19 +6,18 @@
 package entity;
 
 import java.io.Serializable;
-
-import java.io.Serializable;
 import java.sql.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class Role implements Serializable{
+public class Tag_Note implements Serializable{
     private static final long serialVersionUID = 363L;
     private int id;
-    private String name;
-
+    private Tag tag;    
+    private Note note;    
+    
     public int getId() {
         return id;
     }
@@ -27,14 +26,20 @@ public class Role implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Tag getTag() {
+        return tag;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
- 
-    
+
+    public Note getNote() {
+        return note;
+    }
+
+    public void setNote(Note note) {
+        this.note = note;
+    }
     
 }

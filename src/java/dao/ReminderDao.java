@@ -9,6 +9,6 @@ package dao;
  *
  * @author DarkI
  */
-public class RemanderDao {
+public class ReminderDao {
     
 }

@@ -15,7 +15,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 
    
-public class Remander implements Serializable{
+public class Reminder implements Serializable{
      private static final long serialVersionUID = 34L;
     private int id;
     private String remander;

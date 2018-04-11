@@ -15,15 +15,7 @@ public class Note implements Serializable{
     private Date date;
     private Boolean isPublic;
     private User user;
-    private Tag tag;
-
-    public Tag getTag() {
-        return tag;
-    }
-
-    public void setTag(Tag tag) {
-        this.tag = tag;
-    }
+   
 
     public int getId() {
         return id;
