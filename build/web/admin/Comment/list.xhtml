@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:body>
+
+        <ui:composition template="/admin/templates/Layout.xhtml">
+            <ui:define name="content">
+                <h3>All note</h3>
+               
+                <h:form>
+                
+                    <h:dataTable class="table table-bordered " value="#{commentBean.allComments}" var="comment"> 
+                        <h:column>
+                        <f:facet name="header">
+
+                            <h4>Note</h4>
+                        </f:facet>
+                            <h5 style="color: red"><h:commandLink value="#{comment.note.title}" action="#{noteBean.openNote(comment.note.id)}" ></h:commandLink></h5>
+                    </h:column> 
+
+                    <h:column>
+                        <f:facet name="header">
+
+                            <h4>comment</h4>
+                        </f:facet>
+                        <h:outputText value="#{comment.comment_text}" />
+                    </h:column>
+                    
+                 
+                     <h:column>
+                            <f:facet name="header"> Delete</f:facet>
+                            <h:commandLink value ="Delete" action="#{commentBean.delete(comment.id)}"/>
+                            
+                        </h:column>
+                    <h:column>
+                            <f:facet name="header"> Delete</f:facet>
+                            <h:commandLink value ="Update" action="#{commentBean.update(comment)}"/>
+                            
+                        </h:column>
+                 
+                </h:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+
+</html>

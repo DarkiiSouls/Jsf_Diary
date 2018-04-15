@@ -12,49 +12,54 @@
 
     <h:body>
 
-       <ui:composition template="../templates/Layout.xhtml">
+        <ui:composition template="../templates/Layout.xhtml">
             <ui:define name="content">
-                    <style type="text/css">
+                <style type="text/css">
                     #nav {
-                        height: 1014px;
+                        
                     }
                     body{
                         background-color: #333333;
                     }
                 </style>
                 <div style="margin: 70px;padding: 30px;background-color: #f2f2f2;border-radius: 10px ;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;    left: 20%;
-    position: relative">
+                     position: relative">
                     <h2 style="    color: red;
-    margin-left: 400px">Create a Note</h2>
-                <h:form>
-                <h:column>
-               
-                    <h:inputText value="#{noteBean.n.title}" a:onfocus="this.value=''" a:placeholder="Title" /><br/><br/>
-                </h:column>
-                    
-<!--                    <h:column >
-                        <h:inputText id="ckeditor"/>
-                    </h:column>-->
-                <h:column>
-                    
-                    <h:inputTextarea  value="#{noteBean.n.note_text}" cols="100" rows="10" a:placeholder="Your Story" a:onfocus="this.value=''" /><br/><br/>
+                        margin-left: 400px">Create a Note</h2>
+                    <h:form>
+                        <h:column>
 
-                </h:column>
-                    
-                
-                    <input  type="file" name="pic" accept="image/*"></input><br/><br/>
-                    
-              <h:column>
-                    <f:facet name="header">
-                        
-                    </f:facet>
-                    <h4> <h:outputText value="Do you Want it Public "/></h4>
-                    <h:selectBooleanCheckbox value="#{noteBean.n.isPublic}" /><br/><br/>
-                </h:column>
-                    <h:commandButton value="Enter" action="#{noteBean.createNoteForUser(loginBean.loggeduser)}"></h:commandButton>
-                  
-                </h:form>
-            </div>
+                            <h:inputText value="#{noteBean.n.title}"  a:placeholder="Title" /><br/><br/>
+                            <!--a:onfocus="this.value=''"-->
+                        </h:column>
+
+                        <!--                    <h:column >
+                                                <h:inputText id="ckeditor"/>
+                                            </h:column>-->
+                        <h:column>
+
+                            <h:inputTextarea id="editor-blog"  value="#{noteBean.n.note_text}" cols="100" rows="10" a:placeholder="Your Story" /><br/><br/>
+
+                        </h:column>
+
+
+                        <input  type="file" name="pic" accept="image/*"></input><br/><br/>
+                        <h:selectManyMenu  style="height: 100px;" value="#{noteBean.taglist}">
+                                <label >Choose a Tag</label>
+                                <f:selectItems value="#{tagBean.allTags}" var="tag"
+                                               itemLabel="#{tag.name}" itemValue="#{tag.id}" />
+                        </h:selectManyMenu><br/>
+                        <h:column>
+                            <f:facet name="header">
+
+                            </f:facet>
+                            <h4> <h:outputText value="Do you Want it Public "/></h4>
+                            <h:selectBooleanCheckbox value="#{noteBean.n.isPublic}" /><br/><br/>
+                        </h:column>
+                        <h:commandButton value="Enter" action="#{noteBean.createNoteForUser(loginBean.loggeduser)}"></h:commandButton>
+
+                    </h:form>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

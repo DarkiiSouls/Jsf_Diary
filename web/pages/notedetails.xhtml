@@ -15,7 +15,7 @@
             <ui:define name="content">
                 <style type="text/css">
                     #nav {
-                                                
+
                     }
                     body{
                         background-color: #f2f2f2;
@@ -24,36 +24,52 @@
                 <div style="margin: 70px ;   left:  30% ;position:sticky;background-color: #ffffff;width: 800px;    border-radius: 10px;top: -50px;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important ">
                     <div >
                         <h2 style="font-family: serif;    margin: 20px;margin-left:20px;color: red ">#{noteBean.n.title}</h2>
+                        <h:form>
+                                                                    <ui:repeat class="table table-bordered " value="#{tagBean.getAllTagsByNote(noteBean.n.id)}" var="tag1">
+                                                                        <span>#{tag1.name}</span>
+                                                                    </ui:repeat>
+                          
+                            </h:form>
                         <div >
                             <img src="https://c1.staticflickr.com/1/130/376152628_249e3630c0_b.jpg" style="width: 800px;height: 400px"></img>
                         </div>
                         <div style="margin: 20px">
-                            <p style="box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 3px 10px 0 rgba(0,0,0,0.19) !important ;border-radius: 7px;padding: 10px"><h:outputText value="#{noteBean.n.note_text}" /></p>
-                
-                <h6 style="color: red">Publisher #{note.user.username}</h6><br></br>
-                </div>
-                        
-                </div>
+                            <div style="box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 3px 10px 0 rgba(0,0,0,0.19) !important ;border-radius: 7px;padding: 10px"><h:outputText value="#{noteBean.n.note_text}" /></div>
+
+                            <h6 style="color: red">Publisher #{note.user.username}</h6><br></br>
+                        </div>
+
+                    </div>
                     <div style="height: 100px ;background-color: #ffffff"></div>
                     <div style="background-color: #ffffff ;width: 500px;border-radius: 10px">
                         <h2 style="font-family: serif;    margin-left: 70%;color: red ">Comment</h2> 
                         <h:form >
                             <h:column>
-                    
-                                <h:inputTextarea  value="#{commentBean.c.comment_text}" cols="30" rows="3" a:placeholder="Your Story" a:onfocus="this.value=''" style="margin-left: 30%" /><br/><br/>
 
-                </h:column>
+                                <h:inputText   value="#{commentBean.c.comment_text}"  a:placeholder="Your Story" a:onfocus="this.value=''" style="margin-left: 30%" /><br/><br/>
+
+                            </h:column>
                             <h:commandButton value="Enter" action="#{commentBean.createCommentForUser(loginBean.loggeduser, noteBean.n)}" style="margin-left: 75%"></h:commandButton>
                         </h:form>
-                        <div style="margin: 10px">
-                            
-                            <p ><h:outputText value="#{commentBean.c.comment_text}" /></p>
-                        
-                        </div>
+                        <h:dataTable value="#{commentBean.getAllCommentsByNoteId(noteBean.n.id)}" var="comment" class="table"  style="    margin: 10px;
+    left: 160px;
+    position: relative;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 3px 10px 0 rgba(0,0,0,0.19) !important;
+    border-radius: 7px;
+    width: 100%;">
+                            <div class="row">    
+                                <h:column >
+                                    <div class="col-md-12">
+                                        <p><h:outputText value="#{comment.comment_text}" /></p>
+                                        <h6 style="color: red">commenter #{comment.user.username}</h6><br></br>
+                                    </div>
+                                </h:column>
+                            </div>
+                        </h:dataTable>
                     </div>
                 </div>
             </ui:define>
         </ui:composition>
-        
+
     </h:body>
 </html>

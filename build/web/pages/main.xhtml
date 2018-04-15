@@ -9,27 +9,36 @@
     <h:body>
 
         <ui:composition>
-          
+            <style type="text/css">
+                .first {
 
-            <div style="width: 60%;left: 300px;position: inherit">
-                <h:dataTable value="#{noteBean.allPublicNotes}" var="note" class="table"  >
+   width: 250px;
+
+}
+            </style>
+
+            <div style="width: 60%;left: 300px;position: sticky">
+                 <h:form>
+                <h:dataTable value="#{noteBean.allPublicNotes}" var="note" class="table" styleClass="tableClass" columnClasses="first,second" >
                     <div class="row">    
-
-                        <h:column >
+                        <h:column class="first">
+                      
                             <div class="col-md-12">
-                                <h:form>
+                               
                                     <h3><h:commandLink value="#{note.title}" action="#{noteBean.openNote(note.id)}"></h:commandLink></h3>
-                                </h:form>
+                              
 
 
                                 <p><h:outputText value="#{note.note_text}" /></p>
 
                                 <h6 style="color: red">Publisher #{note.user.username}</h6><br></br>
                             </div>
-                        </h:column>
+                            </h:column>
+                       
                     </div>
 
                 </h:dataTable>
+                       </h:form>
             </div>
            
 

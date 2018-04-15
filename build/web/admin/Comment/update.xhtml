@@ -9,17 +9,23 @@
     </h:head>
 
     <h:body>
-        <ui:composition template="/template/Layout.xhtml">
+        <ui:composition template="/admin/templates/Layout.xhtml">
             <ui:define name="content">
 
-                <h:column>
-                    <f:facet name="header">
-                        Comment
-                    </f:facet>
-                    <h:outputText value="Userid"/>
-                    <h:inputText value="#{commentBean.cd.updateComment(comment)}"/>  
-                </h:column>
-               
+                <h:form>
+                    <h:dataTable class="table table-bordered " value="#{commentBean.updateComment()}" var="com">
+                            <h:column>
+
+                                <h:inputText value="#{commentBean.c.comment_text}"  /><br/><br/>
+                            </h:column>
+                           
+                            <h:column>
+                              
+                                <h:commandButton value="Update" action="#{commentBean.updateComment()}"/>
+
+                            </h:column>
+                        </h:dataTable>
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

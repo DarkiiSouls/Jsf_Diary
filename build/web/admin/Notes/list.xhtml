@@ -29,7 +29,7 @@
 
                             <h4>Title</h4>
                         </f:facet>
-                        <h:outputText value="#{note.title}" />
+                         <h5 style="color: red"><h:commandLink  value="#{note.title}"  action="#{noteBean.openNote(note.id)}" ></h:commandLink></h5>
                     </h:column>
                     <h:column>
                         <f:facet name="header">

@@ -22,7 +22,6 @@ public class NoteDao {
     public int saveNote(Note note) {
         Statement st;
         int result = 0;
-
         String sql = "INSERT INTO " + table_name + " (title ,note_text, is_public, user_id) VALUES "
                 + "('" + note.getTitle() + "','" + note.getNote_text() + "'," + note.getIsPublic() + "," + note.getUser().getId() + ")";
         System.err.println(sql);
@@ -129,7 +128,7 @@ public class NoteDao {
             dbm = new DBManager();
         }
 
-        String sqlKomudu = "SELECT * FROM " + table_name;
+        String sqlKomudu = "SELECT * FROM " + table_name  + " WHERE is_public=1";
 
         try {
             st = dbm.initConn().createStatement();

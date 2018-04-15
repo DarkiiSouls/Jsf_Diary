@@ -28,6 +28,7 @@ public class UserDao implements Serializable{
             //4
             st = dbm.initConn().createStatement();
             result = st.executeUpdate(sqlKomudu);
+            dbm.closeConnection();
         } catch (Exception e) {
 
         }
@@ -54,6 +55,7 @@ public class UserDao implements Serializable{
             //4
             st = dbm.initConn().createStatement();
             result = st.executeUpdate(sqlKomudu);
+            dbm.closeConnection();
         } catch (Exception e) {
 
         }
@@ -75,6 +77,7 @@ public class UserDao implements Serializable{
             //4
             st = dbm.initConn().createStatement();
             st.executeUpdate(sqlKomudu);
+            dbm.closeConnection();
         } catch (Exception e) {
 
         }
@@ -104,6 +107,7 @@ public class UserDao implements Serializable{
                 user.setRole(rs.getInt("role"));
 
             }
+            dbm.closeConnection();
         } catch (Exception e) {
 
         }
@@ -136,7 +140,7 @@ public class UserDao implements Serializable{
                 user.setRole(rs.getInt("role"));
                 userList.add(user);
             }
-            
+            dbm.closeConnection();
         } catch (Exception e) {
                 System.out.println("hata");
         }
@@ -170,8 +174,9 @@ public class UserDao implements Serializable{
                 user.setRole(rs.getInt("role"));
                 
             }
+            dbm.closeConnection();
         } catch (Exception e) {
-            System.out.println("adim 6 hata");
+            System.out.println("adim 6 hata"+e.getMessage());
         }
         return user;
     }

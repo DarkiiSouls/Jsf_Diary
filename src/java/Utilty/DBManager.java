@@ -29,6 +29,32 @@ public class DBManager {
         return this.conn;
     }
     
-    
+    public void closeConnection() {
+        try {
+            if (this.conn != null) {
+                this.conn.close();
+            }
+        } catch (SQLException e) {
+        }
+    }
+
+    public void commitConnection() {
+        try {
+            if (this.conn != null && !this.conn.isClosed()) {
+                this.conn.commit();
+            }
+        } catch (SQLException e) {
+        }
+    }
+
+    public void rollbackConnection() {
+        try {
+            if (this.conn != null && !this.conn.isClosed()) {
+                this.conn.rollback();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
 }

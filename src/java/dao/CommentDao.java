@@ -2,8 +2,10 @@ package dao;
 
 import entity.Comment;
 import Utilty.DBManager;
+import entity.Note;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +21,7 @@ public class CommentDao {
 
         String sql = "INSERT INTO " + table_name + " (comment_text,user_id,note_id) VALUES "
                 + "('" + comment.getComment_text() + "'," + comment.getUser().getId() + "," + comment.getNoteid() + ")";
-        System.out.println(sql);
+        
         try {
             st = getDbm().initConn().createStatement();
             result = st.executeUpdate(sql);
@@ -40,11 +42,13 @@ public class CommentDao {
             }
             //3
             String sqlKomudu = "UPDATE " + table_name + " SET "
-                    + "note_text='"+comment.getComment_text()+"', "
+                    + "comment_text='"+comment.getComment_text()+"', "
                     + "WHERE id="+comment.getId();
             //4Comment
+           
             st = dbm.initConn().createStatement();
             result = st.executeUpdate(sqlKomudu);
+      
         } catch (Exception e) {
 
         }
@@ -69,6 +73,64 @@ public class CommentDao {
         } catch (Exception e) {
 
         }
+    }
+      public ArrayList<Comment> getAllComment() {
+        Statement st;
+        ResultSet rs;
+        ArrayList<Comment> comList = new ArrayList<>();
+        
+        if (dbm == null) {
+            dbm = new DBManager();
+        }
+
+        String sqlKomudu = "SELECT * FROM " + table_name;
+
+        try {
+            st = dbm.initConn().createStatement();
+            rs = st.executeQuery(sqlKomudu);
+            while (rs.next()) {
+                Comment comment = new Comment();
+                comment.setId(rs.getInt("id"));
+                comment.setComment_text(rs.getString("comment_text"));
+                comment.setUser(new UserDao().getUser(rs.getInt("user_id")));                
+                comment.setNote(new NoteDao().getNote(rs.getInt("note_id")));
+                comList.add(comment);
+            }
+            
+        } catch (Exception e) {
+                System.out.println("hata");
+        }
+
+        return comList;
+    }
+      
+      public ArrayList<Comment> getAllCommentByNoteId(int note_id) {
+        Statement st;
+        ResultSet rs;
+        ArrayList<Comment> comList = new ArrayList<>();
+        
+        if (dbm == null) {
+            dbm = new DBManager();
+        }
+
+        String sqlKomudu = "SELECT * FROM " + table_name + " WHERE note_id="+ note_id;
+        try {
+            st = dbm.initConn().createStatement();
+            rs = st.executeQuery(sqlKomudu);
+            while (rs.next()) {
+                Comment comment = new Comment();
+                comment.setId(rs.getInt("id"));
+                comment.setComment_text(rs.getString("comment_text"));
+                comment.setUser(new UserDao().getUser(rs.getInt("user_id")));                
+                comment.setNote(new NoteDao().getNote(rs.getInt("note_id")));
+                comList.add(comment);
+            }
+            
+        } catch (Exception e) {
+                System.out.println("hata");
+        }
+
+        return comList;
     }
 
     public Comment getComment(int comment_id) {
