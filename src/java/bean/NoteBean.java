@@ -19,8 +19,7 @@ public class NoteBean {
     private Note n;
     private NoteDao nd;
     private List<Note> clist = null;
-    private int page = 1;
-    private int listItemCount = 5;
+
     private User u;
     private List<String> tagsOfNote;
 
@@ -99,7 +98,7 @@ public class NoteBean {
     }
 
     public ArrayList<Note> getAllPublicNotes() {
-        ArrayList<Note> userList = getNd().getAllPublicNotes(page, listItemCount);
+        ArrayList<Note> userList = getNd().getAllPublicNotes();
         return userList;
     }
 
@@ -108,21 +107,7 @@ public class NoteBean {
         return userList;
     }
 
-    public void prev() {
-        this.page--;
-    }
 
-    public void next() {
-        this.page++;
-    }
-
-    public boolean hasNext() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-        return this.page > Math.ceil(this.getNd().count() / (listItemCount));
-    }
-
-    public boolean hasPrev() {
-        return this.page > 1;
-    }
 
     public Note getN() {
         if (n == null) {
@@ -164,21 +149,7 @@ public class NoteBean {
         this.tagsOfNote = tagsOfNote;
     }
 
-    public int getPage() {
-        return page;
-    }
-
-    public void setPage(int page) {
-        this.page = page;
-    }
-
-    public int getListItemCount() {
-        return listItemCount;
-    }
-
-    public void setListItemCount(int listItemCount) {
-        this.listItemCount = listItemCount;
-    }
+  
 
     public User getU() {
         return u;

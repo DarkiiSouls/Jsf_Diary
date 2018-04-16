@@ -103,21 +103,7 @@ public class NoteDao {
         }
         return null;
     }
-        public int count() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
-        Statement st;
-        ResultSet rs;
-          int count =0;
-        try {
-             st = getDbm().initConn().createStatement();
-             rs = st.executeQuery("select count(id) from as say"+table_name);
-             rs.next();
-            count=rs.getInt("say");
-        } catch (SQLException ex) {
-            Logger.getLogger(NoteBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return count;
-    }
+       
     
     public ArrayList<Note> getAllNotes() {
         Statement st;
@@ -182,12 +168,12 @@ public class NoteDao {
     }
 
     
-    public ArrayList<Note> getAllPublicNotes(int page, int lic) {
+    public ArrayList<Note> getAllPublicNotes() {
         Statement st;
         ResultSet rs;
         ArrayList<Note> noteList = new ArrayList<>();
-        int start=0;
-        start=(page-1)*lic;
+      
+       
 
         if (dbm == null) {
             dbm = new DBManager();

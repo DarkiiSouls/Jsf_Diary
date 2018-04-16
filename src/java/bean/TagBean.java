@@ -102,5 +102,9 @@ public class TagBean implements Serializable {
         this.tag = tagDao.getTag(tag_id);
         return "/admin/Tags/detail.xhtml?faces-redirect=true";
     }
+     public String openTagMain(int tag_id) {
+        this.tag = tagDao.getTag(tag_id);
+        return "/pages/tags.xhtml?faces-redirect=true";
+    }
     
 }

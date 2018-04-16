@@ -3,7 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/src/java/bean/NoteBean.java</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/resources/css/main.css</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/templates/Com/content.xhtml</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/pages/tags.xhtml</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/admin/Tags/detail.xhtml</file>
             <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/pages/notedetails.xhtml</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/pages/main.xhtml</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/admin/Tags/list.xhtml</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/src/java/dao/NoteDao.java</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/pages/notes.xhtml</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/src/java/bean/TagBean.java</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/admin/templates/Layout.xhtml</file>
+            <file>file:/C:/Users/DarkI/Desktop/Windows10/Projects/diary/web/pages/newNote.xhtml</file>
         </group>
     </open-files>
 </project-private>
