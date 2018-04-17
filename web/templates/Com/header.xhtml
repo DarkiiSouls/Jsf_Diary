@@ -22,7 +22,7 @@
                             <ui:fragment rendered="#{!loginBean.girisYaptiMi}"><li><h:commandLink action="/register.xhtml?faces-redirect=true">Register</h:commandLink></li></ui:fragment> 
 
 
-                            <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li><h:commandLink action="/pages/Profile.xhtml?faces-redirect=true">#{loginBean.loggeduser.username}</h:commandLink></li></ui:fragment>
+                            <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li><h:commandLink value="#{loginBean.loggeduser.username}" action="#{userBean.getUserById(loginBean.loggeduser.id)}"></h:commandLink></li></ui:fragment>
                             <ui:fragment rendered="#{loginBean.girisYaptiMi}"><li><h:commandLink action="#{loginBean.cikisYap()}">LogOut</h:commandLink></li></ui:fragment>
                         </div>
                     </ul>

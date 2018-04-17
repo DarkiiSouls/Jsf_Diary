@@ -180,5 +180,37 @@ public class UserDao implements Serializable{
         }
         return user;
     }
+    public User getUserById(int user_id) {
+        Statement st;
+        ResultSet rs;
+        User user = null;
+
+        if (dbm == null) {
+            dbm = new DBManager();
+        }
+
+        String sqlKomudu = "SELECT * FROM " + tablo_name + " WHERE id='" + user_id + "'";
+
+        try {
+
+            st = dbm.initConn().createStatement();
+            rs = st.executeQuery(sqlKomudu);
+
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("id"));
+                
+                user.setUsername(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setRole(rs.getInt("role"));
+                
+            }
+            dbm.closeConnection();
+        } catch (Exception e) {
+            System.out.println("adim 6 hata"+e.getMessage());
+        }
+        return user;
+    }
 
 }

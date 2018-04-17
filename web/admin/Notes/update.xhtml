@@ -14,7 +14,7 @@
             <ui:define name="content">
 
                 <h:form>
-                      <h:dataTable class="table table-bordered " value="#{noteBean.updateNotes()}" var="Not">
+                   
                             <h:column>
 
                                 <h:inputText value="#{noteBean.n.title}" a:placeholder="Title" /><br/><br/>
@@ -30,7 +30,7 @@
                                 <h:commandButton value="Update" action="#{noteBean.updateNotes()}"/>
 
                             </h:column>
-                        </h:dataTable>
+                      
                 </h:form>
             </ui:define>
         </ui:composition>

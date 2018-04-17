@@ -21,38 +21,26 @@ and open the template in the editor.
                     }
                 </style>
                 <h:form>
-                    <h:dataTable class="table table-bordered " value="#{userBean.getUserById(user.id)}" var="user"> 
+                    
+                    <div class="container" style="margin: 100px;width: 100%;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;border-radius: 10px;padding: 100px">
+                        <ui:repeat class="table table-bordered " value="#{userBean.getUserById(loginBean.loggeduser.id)}" var="user">
+                       
+                          
+                            <h3>Name: #{userBean.user.username}</h3>
+                            <br/>
+                            <h3>Email: #{userBean.user.email}</h3>
+                           <br/>
+                           <h3>Role: #{userBean.user.role}</h3>
+                           <br/>
+                       
+                           <h:commandButton value ="Delete your Account" action="#{userBean.delete(user.id)}" style="margin-bottom: 10px"/>
+                     <br/>
+                           <h:commandButton value ="Update your Account" action="#{userBean.update(user)}"/>
+                       
 
-                        <h:column>
-                            
-                        </h:column>
 
-                        <h:column>
-                            <f:facet name="header">
-
-                                <h4>UserName</h4>
-                            </f:facet>
-                            <h:outputText value="#{user.username}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-
-                                <h4>Email</h4>
-                            </f:facet>
-                            <h:outputText value="#{user.email}" />
-                        </h:column> 
-                        <h:column>
-                            <f:facet name="header">
-
-                                <h4>Role</h4>
-                            </f:facet>
-                            <h:outputText value="#{user.role}" />
-                        </h:column> 
-
-                      
-
-                    </h:dataTable>
-                  
+                   </ui:repeat>
+                </div>
                 </h:form>
 
                

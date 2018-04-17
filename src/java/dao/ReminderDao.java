@@ -23,7 +23,7 @@ import javax.faces.bean.SessionScoped;
 public class ReminderDao {
     
       private DBManager dbm;
-    private final String table_name = "remander";
+    private final String table_name = "reminder";
     
         public int saveRemander(Reminder rmd) {
         Statement st;

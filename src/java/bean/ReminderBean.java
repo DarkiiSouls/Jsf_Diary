@@ -35,7 +35,7 @@ public class ReminderBean {
         rmd.setUser(user);
         getRmdDao().saveRemander(getRmd());
         setRmd(new Reminder());
-        return null;
+        return "/admin/Reminder/list.xhtml?faces-redirect=true";
     }
       public String delete(int rmd_id) {
         this.rmdDao.deleteRemander(rmd_id);
@@ -45,17 +45,20 @@ public class ReminderBean {
            public String updateRemander(){
                this.getRmdDao().updateRemander(this.rmd);
                this.rmdList=this.getRmdDao().getRemander();
-        return null;
+        return "/admin/Reminder/list.xhtml?faces-redirect=true";
     }
     public String update(Reminder rmd){
         this.rmd=rmd;
-        return null;
+        return "/admin/Reminder/update.xhtml?faces-redirect=true";
     }
-       public ArrayList<Reminder> getAllNotes (){
+       public ArrayList<Reminder> getAllReminder (){
         ArrayList<Reminder> rmdList = getRmdDao().getRemander();
         return rmdList;
     }
     public Reminder getRmd() {
+        if (rmd == null) {
+            rmd = new Reminder();
+        }
         return rmd;
     }
 
@@ -64,6 +67,9 @@ public class ReminderBean {
     }
 
     public ReminderDao getRmdDao() {
+        if (rmdDao == null) {
+            rmdDao = new ReminderDao();
+        }
         return rmdDao;
     }
 
@@ -79,12 +85,6 @@ public class ReminderBean {
         this.rmdList = rmdList;
     }
 
-    public User getU() {
-        return u;
-    }
-
-    public void setU(User u) {
-        this.u = u;
-    }
-     
+  
+    
 }

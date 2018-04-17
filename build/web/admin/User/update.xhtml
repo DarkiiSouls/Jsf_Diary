@@ -13,7 +13,7 @@
         <ui:composition template="/admin/templates/Layout.xhtml">
             <ui:define name="content">
                 <h:form>
-                    <h:dataTable class="table table-bordered " value="#{userBean.updateUsers()}" var="user">
+                  
                         <h:column>
 
                             <h:inputText value="#{userBean.user.username}" a:placeholder="User name" /><br/><br/>
@@ -23,13 +23,18 @@
 
                             <h:inputText value="#{userBean.user.email}" a:placeholder="Email" /><br/><br/>
                         </h:column>
+                    <h:selectManyMenu  style="height: 100px;" value="#{roleBean.rolelist}">
+                                <label >Choose a Role</label>
+                                <f:selectItems value="#{roleBean.allRole}" var="tag"
+                                               itemLabel="#{roleBean.role.name}" itemValue="#{roleBean.role.id}" />
+                        </h:selectManyMenu><br/>
                         <h:column>
 
                             <h:commandButton value="Update" action="#{userBean.updateUsers()}"/>
 
 
                         </h:column>
-                    </h:dataTable>
+                    
                 </h:form>
             </ui:define>
         </ui:composition>

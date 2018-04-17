@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:body>
+
+        <ui:composition template="/admin/templates/Layout.xhtml">
+            <ui:define name="content">
+                <h3>User Roles</h3>
+               
+                <h:form>
+                
+                    <h:dataTable class="table table-bordered " value="#{roleBean.allRole}" var="role"> 
+
+                  
+
+                    <h:column>
+                        <f:facet name="header">
+
+                            <h4>name</h4>
+                        </f:facet>
+                        <h5 style="color: red"><h:commandLink value="#{role.name}" action="#{roleBean.openrole(role_id)}" ></h:commandLink></h5>
+                                
+                    </h:column>
+                  
+                     <h:column>
+                            <f:facet name="header"> Delete</f:facet>
+                            <h:commandLink value ="Delete" action="#{roleBean.delete(role.id)}"/>
+                            
+                        </h:column>
+                    <h:column>
+                            <f:facet name="header"> Update</f:facet>
+                            <h:commandLink value ="Update" action="#{roleBean.update(role)}"/>
+                            
+                        </h:column>
+                       
+                </h:dataTable>
+                    <h:commandButton action="/admin/Role/create.xhtml?faces-redirect=true" value="Create"></h:commandButton>
+                   
+                        
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+
+</html>

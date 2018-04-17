@@ -114,7 +114,7 @@ public class NoteDao {
             dbm = new DBManager();
         }
 
-        String sqlKomudu = "SELECT * FROM " + table_name  + " WHERE is_public=1";
+        String sqlKomudu = "SELECT * FROM " + table_name  + "";
 
         try {
             st = dbm.initConn().createStatement();

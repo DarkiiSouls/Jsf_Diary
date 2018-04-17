@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/admin/templates/Layout.xhtml">
+            <ui:define name="content">
+ <h:form>
+                <h:dataTable value="#{noteBean.getAllNotesByTag(tagBean.tag.id)}" var="note"> 
+                   
+                    <h:column>
+                        <f:facet name="header">
+
+                            <h4>ID</h4>
+                        </f:facet>
+                        <h:outputText value="#{note.id}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+
+                            <h4>Title</h4>
+                        </f:facet>
+                        
+                        <h5 style="color: red"><h:commandLink  value="#{note.title}"  action="#{noteBean.openNote(note.id)}" ></h:commandLink></h5>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+
+                            <h4>Note</h4>
+                        </f:facet>
+                        <h:outputText value="#{note.note_text}" />
+                    </h:column> 
+                    <h:column>
+                        <f:facet name="header">
+
+                            <h4>Note</h4>
+                        </f:facet>
+                        <h:outputText value="#{note.isPublic}" />
+                    </h:column> 
+                     <h:column>
+                            <f:facet name="header"> Delete</f:facet>
+                            <h:commandLink value ="Delete" action="#{noteBean.delete(note.id)}"/>
+                            
+                        </h:column>
+                    <h:column>
+                            <f:facet name="header"> Delete</f:facet>
+                            <h:commandLink value ="Update" action="#{noteBean.update(note)}"/>
+                            
+                        </h:column>
+                 
+                </h:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+

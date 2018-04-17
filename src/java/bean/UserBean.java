@@ -43,8 +43,8 @@ public class UserBean implements Serializable{
     }
     
     public String getUserById (int user_id){
-        this.user=getUserDao().getUser(user_id);
-        return null;
+        this.user=getUserDao().getUserById(user_id);
+        return "/pages/Profile.xhtml?faces-redirect=true";
     }
     
     public ArrayList<User> getAllUsers (){
@@ -75,7 +75,10 @@ public class UserBean implements Serializable{
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
-    
+     public String openProfile(int user_id) {
+        this.user = userDao.getUser(user_id);
+        return "/pages/Profile.xhtml?faces-redirect=true";
+    }
     
     
 }

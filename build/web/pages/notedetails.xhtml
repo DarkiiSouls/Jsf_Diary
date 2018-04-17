@@ -21,12 +21,14 @@
                         background-color: #f2f2f2;
                     }
                 </style>
-                <div style="margin: 70px ;   left:  30% ;position:sticky;background-color: #ffffff;width: 42%;    border-radius: 10px;top: -50px;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important ">
+                <div style="margin: 70px;padding-bottom: 20px ;   left:  30% ;position:sticky;background-color: #ffffff;width: 42%;    border-radius: 10px;top: -50px;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important ">
                     <div >
 
                         <div style="display: -webkit-inline-box">
                             <h2 style="font-family: serif;    margin-top:  20px;margin-left:20px;color: red ">#{noteBean.n.title}</h2>
-                            <div style=" margin: 30px 300px 0;">
+                            <div style="     margin: 29px 0 0;
+    right: 10px;
+    position: absolute;">
                                 <h:form>
                                     <ui:repeat class="table table-bordered " value="#{tagBean.getAllTagsByNote(noteBean.n.id)}" var="tag">
                                         <spam style="   
@@ -53,7 +55,8 @@
 
                     </div>
 
-                    <div style=" width: 100%;border-radius: 10px">
+                    <div style=" width: 93%;box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.19) !important;
+                                 border-radius: 7px;margin-left: 30px;padding: 10px">
                         <h2 style="font-family: serif;    margin-left: 45%;color: red ">Comment</h2> 
                         <h:form >
 
@@ -65,9 +68,8 @@
                         </h:form >
                         <ui:repeat class="table table-bordered " value="#{commentBean.getAllCommentsByNoteId(noteBean.n.id)}" var="comment" >
 
-                            <div class="col-md-12" style="    margin: 20px 20px 3px;
-                                 box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.19) !important;
-                                 border-radius: 7px;
+                            <div style="    margin: 20px 20px 3px;
+                                 
                                  width: 95%">
                                 <h4 style="color: red"> #{comment.user.username}</h4><br/>
                                 <p><h:outputText value="#{comment.comment_text}" /></p>

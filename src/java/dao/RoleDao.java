@@ -88,4 +88,64 @@ public class RoleDao implements Serializable {
 
         }
     }
+    public ArrayList<Role> getAllRole() {
+        Statement st;
+        ResultSet rs;
+        ArrayList<Role> roleList = new ArrayList<>();
+
+        if (dbm == null) {
+            dbm = new DBManager();
+        }
+
+        String sqlKomudu = "SELECT * FROM " + tablo_name;
+
+        try {
+            st = dbm.initConn().createStatement();
+            rs = st.executeQuery(sqlKomudu);
+            while (rs.next()) {
+                Role role = new Role();
+                role.setId(rs.getInt("id"));
+                role.setName(rs.getString("name"));
+                roleList.add(role);
+            }
+            dbm.closeConnection();    
+        } catch (Exception e) {
+            System.out.println("hata");
+        }
+
+        return roleList;
+    }
+    public Role getRole(int role_id) {
+        Statement st;
+        ResultSet rs;
+
+        String sql = "SELECT * FROM " + tablo_name + " WHERE id=" + role_id;
+
+        try {
+            st = getDbm().initConn().createStatement();
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                Role role = new Role();
+                role.setId(rs.getInt("id"));
+                role.setName(rs.getString("name"));
+                dbm.closeConnection();
+                return role;
+            }
+        } catch (Exception e) {
+           
+        }
+        return null;
+    }
+    
+
+    public DBManager getDbm() {
+        if (this.dbm == null) {
+            this.dbm = new DBManager();
+        }
+        return dbm;
+    }
+
+    public void setDbm(DBManager dbm) {
+        this.dbm = dbm;
+    }
 }

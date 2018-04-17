@@ -13,7 +13,7 @@
             <ui:define name="content">
 
                 <h:form>
-                    <h:dataTable class="table table-bordered " value="#{commentBean.updateComment()}" var="com">
+                   
                             <h:column>
 
                                 <h:inputText value="#{commentBean.c.comment_text}"  /><br/><br/>
@@ -24,7 +24,7 @@
                                 <h:commandButton value="Update" action="#{commentBean.updateComment()}"/>
 
                             </h:column>
-                        </h:dataTable>
+                      
                 </h:form>
             </ui:define>
         </ui:composition>

@@ -1395,12 +1395,13 @@
 /* Menu */
 
 	#nav {
-		background: #0d1217;
+		
 		z-index: 10002;
-		position: relative;
-		width: 75px;
+		position: inherit;
+		width: 3.7%;
                 font-size: 10px;
                 padding: 0 0 0 10px;
+                background-color: #171717;
 	}
 
 		#nav ul {
@@ -1565,7 +1566,7 @@
 /* Main */
 
 	#main {
-		background: #f1f1f1;
+		background: #fff;
 		width: 100%;
 	}
 

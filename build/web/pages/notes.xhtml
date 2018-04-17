@@ -24,17 +24,17 @@
                     <h2 style="left: 45% ;position: relative">All Notes</h2>
                     
                 <ui:repeat class="table table-bordered " value="#{noteBean.allPublicNotes}" var="note">
-                    <div class="col-md-5" style="margin: 20px 60px;box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.19) !important;">
+                    <div class="col-md-5" style="margin: 20px 60px">
                     <div style="margin: 20px">
                     <h:form style="color: red">
                             <h3><h:commandLink value="#{note.title}" action="#{noteBean.openNote(note.id)}"></h:commandLink></h3>
                      </h:form>
                         <div >
-                            <img src="https://c1.staticflickr.com/1/130/376152628_249e3630c0_b.jpg" style="width: 100%;height: 400px"></img>
+                            <img src="https://c1.staticflickr.com/1/130/376152628_249e3630c0_b.jpg" style="width: 100%;height: 300px;border-radius: 10px"></img>
                         </div>
                     
                     
-                    <p><h:outputText value="#{note.note_text}" /></p>
+                        <p style="height: 160px;overflow: hidden"><h:outputText value="#{note.note_text}" /></p>
                     
                     <h6 style="color: red">Publisher #{note.user.username}</h6><br></br>
             </div>
