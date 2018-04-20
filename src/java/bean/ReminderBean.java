@@ -7,6 +7,7 @@ package bean;
 
 import dao.ReminderDao;
 import entity.Reminder;
+
 import entity.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,26 +26,26 @@ public class ReminderBean {
     private List<Reminder> rmdList=null;
     private User u;
 
-     public String createRemander (){
-        getRmdDao().saveRemander(getRmd());
+     public String createReminder (){
+        getRmdDao().saveReminder(getRmd());
         setRmd(new Reminder());
         return null;
     }
-     public String createRemanderForm (User user){
+     public String createReminderForm (User user){
         Reminder rmd=getRmd();
         rmd.setUser(user);
-        getRmdDao().saveRemander(getRmd());
+        getRmdDao().saveReminder(getRmd());
         setRmd(new Reminder());
-        return "/admin/Reminder/list.xhtml?faces-redirect=true";
+        return "/pages/mynotes.xhtml?faces-redirect=true";
     }
       public String delete(int rmd_id) {
-        this.rmdDao.deleteRemander(rmd_id);
+        this.rmdDao.deleteReminder(rmd_id);
          
              return null;  
     }
-           public String updateRemander(){
-               this.getRmdDao().updateRemander(this.rmd);
-               this.rmdList=this.getRmdDao().getRemander();
+           public String updateReminder(){
+               this.getRmdDao().updateReminder(this.rmd);
+               this.rmdList=this.getRmdDao().getReminder();
         return "/admin/Reminder/list.xhtml?faces-redirect=true";
     }
     public String update(Reminder rmd){
@@ -52,8 +53,12 @@ public class ReminderBean {
         return "/admin/Reminder/update.xhtml?faces-redirect=true";
     }
        public ArrayList<Reminder> getAllReminder (){
-        ArrayList<Reminder> rmdList = getRmdDao().getRemander();
+        ArrayList<Reminder> rmdList = getRmdDao().getReminder();
         return rmdList;
+    }
+        public ArrayList<Reminder> getAllUserReminders(int user_id) {
+        ArrayList<Reminder> userList = getRmdDao().getAllUserReminders(user_id);
+        return userList;
     }
     public Reminder getRmd() {
         if (rmd == null) {
@@ -84,7 +89,13 @@ public class ReminderBean {
     public void setRmdList(List<Reminder> rmdList) {
         this.rmdList = rmdList;
     }
+public User getU() {
+        return u;
+    }
 
+    public void setU(User u) {
+        this.u = u;
+    }
   
     
 }

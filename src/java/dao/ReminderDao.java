@@ -5,16 +5,14 @@
  */
 package dao;
 
-import Utilty.DBManager;
-import entity.Note;
 import entity.Reminder;
+import Utilty.DBManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.SessionScoped;
-
 /**
  *
  * @author DarkI
@@ -25,12 +23,11 @@ public class ReminderDao {
       private DBManager dbm;
     private final String table_name = "reminder";
     
-        public int saveRemander(Reminder rmd) {
+        public int saveReminder(Reminder rmd) {
         Statement st;
         int result = 0;
-
-        String sql = "INSERT INTO " + table_name + " (remander ,date,user_id) VALUES "
-                + "('" + rmd.getRemander() + "','" + rmd.getDate() + "," + rmd.getUser().getId() + ")";
+        String sql = "INSERT INTO " + table_name + " (reminder , user_id) VALUES "
+                + "('" + rmd.getReminder()+ "','" +  rmd.getUser().getId() + ")";
         System.err.println(sql);
         try {
             st = getDbm().initConn().createStatement();
@@ -40,7 +37,7 @@ public class ReminderDao {
         }
         return result;
     }
-            public int updateRemander(Reminder rmd) {
+            public int updateReminder(Reminder rmd) {
         //1
         Statement st;
         int result = 0;
@@ -52,7 +49,7 @@ public class ReminderDao {
             }
             //3
             String sqlKomudu = "UPDATE " + table_name + " SET "
-                    + "remander='"+rmd.getRemander()+"', "
+                    + "reminder='"+rmd.getReminder()+"', "
                     + "date='"+rmd.getDate()+"', "
                     + "WHERE id="+rmd.getId();
             //4
@@ -64,7 +61,7 @@ public class ReminderDao {
         return result;
     }
                 
-    public void deleteRemander(int rmd_id) {
+    public void deleteReminder(int rmd_id) {
         //1
         Statement st;
 
@@ -82,7 +79,7 @@ public class ReminderDao {
 
         }
     }
-        public ArrayList<Reminder> getRemander() {
+        public ArrayList<Reminder> getReminder() {
         Statement st;
         ResultSet rs;
         ArrayList<Reminder> rmdList = new ArrayList<>();
@@ -99,7 +96,7 @@ public class ReminderDao {
             while (rs.next()) {
                 Reminder rmd = new Reminder();
                 rmd.setId(rs.getInt("id"));
-                rmd.setRemander(rs.getString("remander"));
+                rmd.setReminder(rs.getString("reminder"));
                 rmd.setDate(rs.getDate("date"));              
                 rmd.setUser(new UserDao().getUser(rs.getInt("user_id")));
                 rmdList.add(rmd);
@@ -119,6 +116,37 @@ public class ReminderDao {
 
     public void setDbm(DBManager dbm) {
         this.dbm = dbm;
+    }
+
+    public ArrayList<Reminder> getAllUserReminders(int user_id) {
+        Statement st;
+        ResultSet rs;
+        ArrayList<Reminder> rmdList = new ArrayList<>();
+        
+        if (dbm == null) {
+            dbm = new DBManager();
+        }
+
+        String sqlKomudu = "SELECT * FROM " + table_name+" WHERE id="+user_id;
+
+        try {
+            st = dbm.initConn().createStatement();
+            rs = st.executeQuery(sqlKomudu);
+            while (rs.next()) {
+                Reminder rmd = new Reminder();
+                rmd.setId(rs.getInt("id"));
+                rmd.setReminder(rs.getString("reminder"));
+                rmd.setDate(rs.getDate("date"));              
+                rmd.setUser(new UserDao().getUser(rs.getInt("user_id")));
+                rmdList.add(rmd);
+            }
+            
+        } catch (Exception e) {
+                System.out.println("hata");
+        }
+
+        return rmdList;
+        
     }
     
     

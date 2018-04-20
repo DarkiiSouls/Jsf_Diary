@@ -42,22 +42,25 @@
                 </div>
                         
                         </div>
+                
                 <div class="col-md-6">
                     <div style="margin: 70px;    
     background-color: #ffffff;
     border-radius: 10px;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important">
                     <h2 style="padding-top :30px; text-align: center">Your Reminders</h2>
-                     <ui:repeat class="table table-bordered " value="#{noteBean.getAllUserNotes(loginBean.loggeduser.id)}" var="note" >
+                    <h:form>
+                    <h:commandButton action="/pages/newReminder.xhtml?faces-redirect=true" value="Create"></h:commandButton>
+                    </h:form>
+                    <ui:repeat class="table table-bordered " value="#{reminderBean.getAllUserReminders(loginBean.loggeduser.id)}" var="reminder" >
+                         
                             <div style="padding: 20px;margin: 20px;">
                         <h:column >
     <!--                        <h3><a href="/pages/notedetails.xhtml?id=#{note.id}\&faces-redirect=true"></a></h3>-->
-                            <h:form style="color: red">
-                                <h3><h:commandLink value="#{note.title}" action="#{noteBean.openNote(note.id)}"></h:commandLink></h3>
-                            </h:form>
-                            <p><h:outputText value="#{note.note_text}" /></p>
+                           
+                            <p><h:outputText value="#{reminder.reminder}" /></p>
                             <h:form style="text-align: center">  
-                                <h:commandButton value="Delete"  action="#{noteBean.delete(note.id)}" style="margin: 10px"/>
-                                <h:commandButton value="Update"  action="#{noteBean.update(note)}" style="margin: 10px"/>
+                                <h:commandButton value="Delete"  action="#{reminderBean.delete(reminder.id)}" style="margin: 10px"/>
+                                <h:commandButton value="Update"  action="#{reminderBean.update(reminder)}" style="margin: 10px"/>
                               
                             </h:form>
                         </h:column>

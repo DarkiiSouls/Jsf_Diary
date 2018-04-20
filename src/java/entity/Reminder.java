@@ -18,7 +18,7 @@ import javax.faces.bean.RequestScoped;
 public class Reminder implements Serializable{
      private static final long serialVersionUID = 34L;
     private int id;
-    private String remander;
+    private String reminder;
     
     private Date date;
  
@@ -32,12 +32,12 @@ public class Reminder implements Serializable{
         this.id = id;
     }
 
-    public String getRemander() {
-        return remander;
+    public String getReminder() {
+        return reminder;
     }
 
-    public void setRemander(String remander) {
-        this.remander = remander;
+    public void setReminder(String reminder) {
+        this.reminder = reminder;
     }
 
     public Date getDate() {
