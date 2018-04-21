@@ -58,7 +58,7 @@ public class RoleDao implements Serializable {
             }
             //3
             String sqlKomudu = "UPDATE " + tablo_name + " SET "
-                    + "name='" + role.getName() + "', "
+                    + "name='" + role.getName() + "' "
                     + "WHERE id=" + role.getId();
             //4
             st = dbm.initConn().createStatement();

@@ -49,8 +49,9 @@ public class UserDao implements Serializable{
             //3
             String sqlKomudu = "UPDATE " + tablo_name + " SET "
                     + "username='"+user.getUsername()+"', "
-                    + "email='"+user.getEmail()+"' "
-                    + "password='"+user.getPassword()+"' "
+                    + "email='"+user.getEmail()+"', "
+                    + "password='"+user.getPassword()+"', "                    
+                    + "role='"+user.getRole()+"' "
                     + "WHERE id="+user.getId();
             //4
             st = dbm.initConn().createStatement();

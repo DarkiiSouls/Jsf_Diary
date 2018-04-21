@@ -14,7 +14,7 @@
             <ui:define name="content">
 
                 <h:form>
-                    <h:dataTable class="table table-bordered " value="#{tagBean.updateTags()}" var="tag">
+                    
                             <h:column>
 
                                 <h:inputText value="#{tagBean.tag.name}"  /><br/><br/>
@@ -25,7 +25,7 @@
                                 <h:commandButton value="Update" action="#{tagBean.updateTags()}"/>
 
                             </h:column>
-                        </h:dataTable>
+                       
                 </h:form>
             </ui:define>
         </ui:composition>

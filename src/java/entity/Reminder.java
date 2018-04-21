@@ -8,6 +8,7 @@ package entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -41,6 +42,8 @@ public class Reminder implements Serializable{
     }
 
     public Date getDate() {
+        if(date == null)
+            return new Date(new java.util.Date().getTime());
         return date;
     }
 

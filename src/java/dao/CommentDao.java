@@ -42,7 +42,7 @@ public class CommentDao {
             }
             //3
             String sqlKomudu = "UPDATE " + table_name + " SET "
-                    + "comment_text='"+comment.getComment_text()+"', "
+                    + "comment_text='"+comment.getComment_text()+"' "
                     + "WHERE id="+comment.getId();
             //4Comment
            

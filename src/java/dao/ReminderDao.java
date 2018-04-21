@@ -27,7 +27,7 @@ public class ReminderDao {
         Statement st;
         int result = 0;
         String sql = "INSERT INTO " + table_name + " (reminder , user_id) VALUES "
-                + "('" + rmd.getReminder()+ "','" +  rmd.getUser().getId() + ")";
+                + "('" + rmd.getReminder()+ "','" +  rmd.getUser().getId() + "')";
         System.err.println(sql);
         try {
             st = getDbm().initConn().createStatement();
@@ -50,7 +50,7 @@ public class ReminderDao {
             //3
             String sqlKomudu = "UPDATE " + table_name + " SET "
                     + "reminder='"+rmd.getReminder()+"', "
-                    + "date='"+rmd.getDate()+"', "
+                    + "date='"+rmd.getDate()+"' "
                     + "WHERE id="+rmd.getId();
             //4
             st = dbm.initConn().createStatement();
@@ -127,7 +127,7 @@ public class ReminderDao {
             dbm = new DBManager();
         }
 
-        String sqlKomudu = "SELECT * FROM " + table_name+" WHERE id="+user_id;
+        String sqlKomudu = "SELECT * FROM " + table_name+" WHERE user_id="+user_id;
 
         try {
             st = dbm.initConn().createStatement();

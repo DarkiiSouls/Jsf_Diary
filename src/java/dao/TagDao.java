@@ -62,7 +62,7 @@ public class TagDao implements Serializable {
             }
             //3
             String sqlKomudu = "UPDATE " + tablo_name + " SET "
-                    + "name='" + tag.getName() + "', "
+                    + "name='" + tag.getName() + "' "
                     + "WHERE id=" + tag.getId();
             //4
             st = dbm.initConn().createStatement();

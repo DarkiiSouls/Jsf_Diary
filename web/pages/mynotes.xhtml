@@ -49,7 +49,7 @@
     border-radius: 10px;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important">
                     <h2 style="padding-top :30px; text-align: center">Your Reminders</h2>
                     <h:form>
-                    <h:commandButton action="/pages/newReminder.xhtml?faces-redirect=true" value="Create"></h:commandButton>
+                        <h:commandButton action="/pages/newReminder.xhtml?faces-redirect=true" value="Create" style="margin: 20px"></h:commandButton>
                     </h:form>
                     <ui:repeat class="table table-bordered " value="#{reminderBean.getAllUserReminders(loginBean.loggeduser.id)}" var="reminder" >
                          

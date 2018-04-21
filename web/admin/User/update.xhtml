@@ -23,11 +23,11 @@
 
                             <h:inputText value="#{userBean.user.email}" a:placeholder="Email" /><br/><br/>
                         </h:column>
-                    <h:selectManyMenu  style="height: 100px;" value="#{roleBean.rolelist}">
+                    <h:selectOneMenu style="height: 50px;" value="#{userBean.user.role}">
                                 <label >Choose a Role</label>
-                                <f:selectItems value="#{roleBean.allRole}" var="tag"
-                                               itemLabel="#{roleBean.role.name}" itemValue="#{roleBean.role.id}" />
-                        </h:selectManyMenu><br/>
+                                <f:selectItems value="#{roleBean.allRole}" var="role"
+                                               itemLabel="#{role.name}" itemValue="#{role.id}" />
+                        </h:selectOneMenu><br/><br/>
                         <h:column>
 
                             <h:commandButton value="Update" action="#{userBean.updateUsers()}"/>
