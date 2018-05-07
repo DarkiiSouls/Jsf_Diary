@@ -5,9 +5,23 @@
  */
 package bean;
 
+import Utilty.DBManager;
+import dao.PhotoDao;
+import entity.Photo;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
+import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -19,48 +33,89 @@ import javax.servlet.http.Part;
  */
 @ManagedBean
 @SessionScoped
-public class UploadBean {
-     private Part image;
-    private boolean upladed;
-    
-    public void doUpload(){
-        try{
-            InputStream in=image.getInputStream();
-          //  C:\Users\erkan\Documents\NetBeansProjects\internet\web\resources\image
-            File f=new File("C:\\Users\\erkan\\OneDrive\\Masaüstü\\diary\\web\\resources\\resim\\"+image.getSubmittedFileName());
-            f.createNewFile();
-            FileOutputStream out=new FileOutputStream(f);
+public class UploadBean implements Serializable {
+
+    private Part part;
+
+    private List<Photo> photolist;
+    private PhotoDao pd;
+
+    private String uploadPath = "C:\\upload\\";
+
+    public void upload() throws IOException {
+        try {
+
+            InputStream input = part.getInputStream();
+            File f = new File(this.uploadPath + part.getSubmittedFileName());
+            Files.copy(input, f.toPath(), REPLACE_EXISTING);
+
+            Photo pt = new Photo();
+
+            pt.setUrl(f.getParent());
+
+            pt.setName(f.getName());
             
-            byte[] buffer=new byte[1024];
-            int length;
-            while((length=in.read(buffer))>0){
-                out.write(buffer, 0, length);
-            }
-            out.close();
-            in.close();
+            pt.setType(part.getContentType());
             
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("path", f.getAbsolutePath());
-            upladed=true;
             
-        }catch(Exception e)
-        {
-            e.printStackTrace(System.out);
-       }
+            this.getPd().insert(pt);
+            
+           
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public List<Photo> getAllList() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+        List<Photo> fileList = getPd().getList();
+        return fileList;
+       
+    }
+
+    public Part getPart() {
+        return part;
+    }
+
+    public void setPart(Part part) {
+        this.part = part;
+    }
+
+    public PhotoDao getPd() {
+        if (pd == null) {
+            pd = new PhotoDao();
+        }
+
+        return pd;
+    }
+
+    public void setPd(PhotoDao pd) {
+        this.pd = pd;
+    }
+
+    public String getUploadPath() {
+        return uploadPath;
+    }
+
+    public void setUploadPath(String uploadPath) {
+        this.uploadPath = uploadPath;
+    }
+
+    public List<Photo> getPhotolist() {
+        this.photolist = getPd().getList();
+        return photolist;
+    }
+
+    public void setPhotolist(List<Photo> photolist) {
+        this.photolist = photolist;
+    }
+
 }
-
-    public Part getImage() {
-        return image;
-    }
-
-    public void setImage(Part image) {
-        this.image = image;
-    }
-
-    public boolean isUpladed() {
-        return upladed;
-    }
-
-    public void setUpladed(boolean upladed) {
-        this.upladed = upladed;
-    }
-}
+/*      String format = "dd -MM -yyyy -hhmmss";
+            SimpleDateFormat sdf= new SimpleDateFormat(format);
+            String extension = f.getName().substring(f.getName().lastIndexOf("."));
+            String fileName = sdf.format("dd -MM -yyyy -hhmmss") + extension ;
+            File newFile= new File(this.uploadPath+fileName);
+            f.renameTo(newFile);
+ */

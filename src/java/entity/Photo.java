@@ -12,13 +12,14 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class Photo implements Serializable{
+public class Photo implements Serializable {
+
     private static final long serialVersionUID = 363L;
     private int id;
     private String url;
-    private User user;    
-    private Note note;   
-
+    private String name;
+    private String type;
+   
     public int getId() {
         return id;
     }
@@ -35,21 +36,25 @@ public class Photo implements Serializable{
         this.url = url;
     }
 
-    public User getUser() {
-        return user;
+    public String getName() {
+        return name;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Note getNote() {
-        return note;
+    public String getType() {
+        return type;
     }
 
-    public void setNote(Note note) {
-        this.note = note;
+    public void setType(String type) {
+        this.type = type;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Photo{" + "id=" + id + " url=" + url + ", name=" + name + ", type=" + type + '}';
+    }
+
 }

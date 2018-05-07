@@ -42,8 +42,8 @@
 
                         </h:column>
 
-
-                        <input  type="file" name="pic" accept="image/*"></input><br/><br/>
+                        <h:commandButton value= "İmage" action="/pages/image.xhtml?faces-redirect=true"/><br/><br/>
+<!--                        <input  type="file" name="pic" accept="image/*"></input><br/><br/>-->
                         <h:selectManyMenu  style="height: 100px;" value="#{noteBean.taglist}">
                                 <label >Choose a Tag</label>
                                 <f:selectItems value="#{tagBean.allTags}" var="tag"
